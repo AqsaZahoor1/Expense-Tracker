@@ -1,12 +1,22 @@
-import Expenseitem from ".//Expenseitem";
+import Expenseitem from "./Expenseitem";
+import React , {useState} from 'react'
 import './Expenses.css'
+import ExpensesFilter from "./ExpensesFilter";
 
 
 function Expenses(props) {
+
+  const [year , setYear] = useState('2020');
  
+  const filterYearhandler = (selectedyear)=>
+  {
+    setYear(selectedyear);
+  }
+
   
   return (
     <div className="expenses">
+      <ExpensesFilter selected = {year} onAddFilter = {filterYearhandler}/>
       <Expenseitem
       title = {props.items[0].title}
       amount = {props.items[0].amount}
